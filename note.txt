@@ -1,0 +1,160 @@
+npm init                 or     npm init -y
+npm install firebase     or     npm install firebase@latest
+npm install express      or     npm install express@latest
+
+
+---------------------------------------------------------------------------------------------------
+
+
+=> How to use Vite
+
+1. Install
+    npm install --save-dev vite
+
+
+2. Create a new file as vite.config.js
+    import { defineConfig } from "vite";
+
+    export default defineConfig({
+        publicDir:"../public",
+        root:"./src",
+        build:{
+            outDir:"../dist" // define the output directory, the output directory to build files
+        },
+        server:{
+            watch:{
+                usePolling:true
+            }
+        }
+    });
+
+
+3. Update package.json
+    "scripts":{
+        "dev":"vite",
+        "build":"vite build"
+    }
+
+
+4. Run Build the app for production
+    npm run build
+
+
+5. Run Vite in development server
+    npm run dev
+
+
+---------------------------------------------------------------------------------------------------
+
+
+=> Install express
+
+npm install express     or      npm install express@latest
+
+nodemon server.js
+
+=> import
+
+import express from "express";
+
+
+---------------------------------------------------------------------------------------------------
+
+
+=> Enable Email/Password Authentication
+Make sure you have enabled Email/Password authentication in your firebase console.
+
+Authentication > Sign-in Method
+Ensure Email/Password is enabled.
+
+
+=> Enable Google Sign-in in firebase console
+
+Authentication > Sign-in Method
+Enable Google under the list of providers
+
+Public-facing name for project = your firebase project id
+Support email for project = your firebase gmail address
+Save the changes
+
+
+---------------------------------------------------------------------------------------------------
+
+
+=> Customize the password reset email template
+you can customize the password reset email link to redirected user to a specific page in your app.
+
+Authentication > Templates > Password Reset > click edit pen
+
+
+---------------------------------------------------------------------------------------------------
+
+
+=> How to install Tailwind CSS
+
+1. Install Tailwind CSS
+https://tailwindcss.com/
+
+**Syr used PostCSS, I can't find it so i used Vite :)
+
+= npm install tailwindcss @tailwindcss/vite
+
+= update defineConfig from vite.config.js file 
+    plugins: [
+        tailwindcss(),
+    ]
+
+2. Just follow the steps shown in the official website
+
+
+---------------------------------------------------------------------------------------------------
+
+
+=> Install Date-fns
+
+1. Install
+https://date-fns.org/docs/Getting-Started
+
+npm install date-fns --save
+
+2. Import in src/main.js or src/js/uielement.js
+
+import { format } from "date-fns";
+
+
+---------------------------------------------------------------------------------------------------
+
+
+=> Install Font Awesome 6
+
+1. Install
+
+npm install @fortawesome/fontawesome-free
+
+2. Import in src/main.js or src/js/authsigninapp.js or src/js/app.js
+
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
+
+---------------------------------------------------------------------------------------------------
+
+
+=> Deploy on Cloud server
+
+1. your project need Repo public/private to Github
+
+2. sign-in your account to https://render.com/
+
+3. Prepare the build output
+    your project must be built and typically located in the "dist" directory
+
+4. Create a new static site
+    click > "+New" > Static Site > Github > your account > choose repo > click "Connect"
+
+5.  Name : publicchatroom
+    Branch : master
+    Build Command : npm run build   (React, Vue, Vite, etc...), ng build    (Angular)
+    Publish Directory : dist
+    Start Command : node server.js
+
+6. Environment Variables = copy paste .env data to Environment Variables
